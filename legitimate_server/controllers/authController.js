@@ -81,14 +81,12 @@ exports.login = (req, res) => {
   const { username, password } = req.body;
 
   if (!USERS[username] || USERS[username] !== password) {
-    return res.status(401).send(
-      <h2 style="color:red;font-family:sans-serif;text-align:center;margin-top:40px">
-        ❌ Invalid credentials.{" "}
-        <a href="/" style="color:#38bdf8">
-          Try again
-        </a>
-      </h2>,
-    );
+    return res.status(401).send(`
+    <h2 style="color:red;font-family:sans-serif;text-align:center;margin-top:40px">
+      ❌ Invalid credentials.
+      <a href="/" style="color:#38bdf8">Try again</a>
+    </h2>
+  `);
   }
 
   const sessionId = generateSessionId();
